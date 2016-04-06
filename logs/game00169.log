@@ -1,0 +1,15 @@
+# Server version 0.08 running on 192.168.2.231:8123
+# Game ID: 169
+# Board class: hus.HusBoard
+# Timeout: 2000
+# First Move Timeout: 30000
+# Date: Thu Mar 31 18:26:37 EDT 2016
+# Player 1: Player-0, 'RandomHusPlayer', running on 192.168.2.231
+# Player 2: Player-1, '260513906', running on 192.168.2.231
+START Player-0 RandomHusPlayer
+START Player-1 260513906
+PIT 0 4
+PIT 1 13
+PIT 0 14
+GAMEOVER TIMEOUT WINNER 0
+# Game ended: Thu Mar 31 18:27:00 EDT 2016

@@ -1,0 +1,13 @@
+# Server version 0.08 running on cs-3.CS.McGill.CA:8123
+# Game ID: 387
+# Board class: hus.HusBoard
+# Timeout: 2000
+# First Move Timeout: 30000
+# Date: Wed Apr 06 13:36:45 EDT 2016
+# Player 1: Player-0, 'RandomHusPlayer', running on cs-3.CS.McGill.CA
+# Player 2: Player-1, '260513906', running on cs-3.CS.McGill.CA
+START Player-0 RandomHusPlayer
+START Player-1 260513906
+PIT 0 0
+GAMEOVER TIMEOUT WINNER 0
+# Game ended: Wed Apr 06 13:37:28 EDT 2016
