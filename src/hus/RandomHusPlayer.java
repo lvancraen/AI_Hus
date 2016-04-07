@@ -56,7 +56,7 @@ public class RandomHusPlayer extends HusPlayer {
 	    	} else if ((51 <= seed && seed <= 70) || (25 <= seed && seed <= 44)) {
 	    		Node startNode = new Node(board_state);
 	    		//System.out.println("MyLegalMoves: "+board_state.getLegalMoves().size());
-	    		startNode = callMiniMaxAB(board_state, -10000, 10000, 6, startNode, startTime);
+	    		startNode = callMiniMaxAB(board_state, -10000, 10000, 7, startNode, startTime);
 	    		int tempMove = 0;
 		    	int tempHighScore = -10;
 		    	for (int i=0; i<startNode.numChildren(); i++) {
@@ -71,7 +71,7 @@ public class RandomHusPlayer extends HusPlayer {
 	    	} else if ((70 < seed && seed <= 80) || (15 <= seed && seed < 25)) {
 	    		Node startNode = new Node(board_state);
 	    		//System.out.println("MyLegalMoves: "+board_state.getLegalMoves().size());
-	    		startNode = callMiniMaxAB(board_state, -10000, 10000, 6, startNode, startTime);
+	    		startNode = callMiniMaxAB(board_state, -10000, 10000, 8, startNode, startTime);
 	    		int tempMove = 0;
 		    	int tempHighScore = -10;
 		    	for (int i=0; i<startNode.numChildren(); i++) {

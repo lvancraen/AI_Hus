@@ -422,3 +422,12 @@
 537,260513906,RandomHusPlayer,1,RandomHusPlayer,21,game00537.log,
 539,260513906,RandomHusPlayer,0,260513906,91,game00539.log,
 541,260513906,RandomHusPlayer,1,RandomHusPlayer,0,game00541.log,TIMEOUT
+542,260513906,RandomHusPlayer,0,260513906,75,game00542.log,
+543,260513906,RandomHusPlayer,0,260513906,75,game00543.log,
+545,260513906,RandomHusPlayer,0,260513906,59,game00545.log,
+546,RandomHusPlayer,260513906,0,RandomHusPlayer,48,game00546.log,
+547,260513906,RandomHusPlayer,0,260513906,59,game00547.log,
+549,260513906,RandomHusPlayer,0,260513906,79,game00549.log,
+550,RandomHusPlayer,260513906,1,260513906,44,game00550.log,
+551,260513906,RandomHusPlayer,0,260513906,19,game00551.log,
+552,RandomHusPlayer,260513906,1,260513906,45,game00552.log,

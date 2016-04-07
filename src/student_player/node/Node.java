@@ -1,7 +1,6 @@
 package student_player.node;
 
 import java.util.ArrayList;
-import java.util.List;
 import hus.HusBoardState;
 import hus.HusMove;
 

@@ -5,7 +5,6 @@ import hus.HusPlayer;
 import hus.HusMove;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 import java.lang.System;
@@ -29,42 +28,36 @@ public class StudentPlayer extends HusPlayer {
     public HusMove chooseMove(HusBoardState board_state)
     {
     	long startTime = System.nanoTime();
-    	System.out.println("Turn Number: "+board_state.getTurnNumber());
     	if (board_state.getTurnNumber() == 0) {
     		Node startNode = new Node(board_state);
     		ArrayList<Node> nodes = new ArrayList<Node>();
     		nodes = quiescence(board_state, 4, startNode);
     		nodes = callMiniMaxAB(board_state, -10000, 10000, 7, nodes);
 	    	Collections.sort(nodes);
-	    	System.out.println("Time left over: "+(double)(System.nanoTime() - startTime)/1000000000);
 	    	return nodes.get(0).getMove();
     	}
     	else {
     	int seed = eval(board_state);
-    	System.out.println("Seed count: "+seed);
-    	System.out.println("Move count: "+board_state.getLegalMoves().size());
-	    	if (45 <= seed && seed <= 50) {
+    	//System.out.println("Turn Number: "+board_state.getTurnNumber() + ", "+seed);
+	    	if (46 <= seed && seed <= 50) {
 	    		Node startNode = new Node(board_state);
 	    		ArrayList<Node> nodes = new ArrayList<Node>();
 	    		nodes = quiescence(board_state, 4, startNode);
 	    		nodes = callMiniMaxAB(board_state, -10000, 10000, 6, nodes);
-		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);		    	
 		    	Collections.sort(nodes);
 		    	return nodes.get(0).getMove();
-	    	} else if ((50 < seed && seed <= 60) || (28 < seed && seed < 45)) {
+	    	} else if ((50 < seed && seed <= 63) || (31 < seed && seed < 46)) {
 	    		Node startNode = new Node(board_state);
 	    		ArrayList<Node> nodes = new ArrayList<Node>();
 	    		nodes = quiescence(board_state, 4, startNode);
 	    		nodes = callMiniMaxAB(board_state, -10000, 10000, 7, nodes);
-		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);		    	
 		    	Collections.sort(nodes);
 		    	return nodes.get(0).getMove();
-	    	} else if ((60 < seed && seed <= 83) || (15 <= seed && seed <= 28)) {
+	    	} else if ((63 < seed && seed <= 83) || (15 <= seed && seed <= 31)) {
 	    		Node startNode = new Node(board_state);
 	    		ArrayList<Node> nodes = new ArrayList<Node>();
 	    		nodes = quiescence(board_state, 4, startNode);
 	    		nodes = callMiniMaxAB(board_state, -10000, 10000, 8, nodes);
-		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);		    	
 		    	Collections.sort(nodes);
 		    	return nodes.get(0).getMove();
 	    	} else if ((83 < seed && seed <= 90) || (0 <= seed && seed <= 15)) {
@@ -72,12 +65,10 @@ public class StudentPlayer extends HusPlayer {
 	    		ArrayList<Node> nodes = new ArrayList<Node>();
 	    		nodes = quiescence(board_state, 4, startNode);
 	    		nodes = callMiniMaxAB(board_state, -10000, 10000, 9, nodes);
-		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);		    	
 		    	Collections.sort(nodes);
 		    	return nodes.get(0).getMove();
 	    	}
 	    	else {
-	    		Node root = new Node(board_state);
 	    		HusMove move = null;
 	    		int tempMove = 0;
 	    		double tempHighWinLoss = 0;
@@ -87,14 +78,11 @@ public class StudentPlayer extends HusPlayer {
 		    		tempBoard.move(board_state.getLegalMoves().get(i));
 		    		Node child = new Node(tempBoard);
 		    		double winLoss = monteCarlo(child);
-		    		//System.out.println("Move: "+i+" with perctWinLoss: "+winLoss);
 		    		if (tempHighWinLoss < winLoss) {
-		    			//System.out.println("New move being chosen");
 		    			tempMove = i;
 		    			tempHighWinLoss = winLoss;
 		    			 move = board_state.getLegalMoves().get(tempMove);
 		    		} else {
-		    			//System.out.println("Keep old move");
 		    		}
 		    	}
 		    	return move;
@@ -114,15 +102,9 @@ public class StudentPlayer extends HusPlayer {
     		sortedMoves.add(child);
     	}
     	Collections.sort(sortedMoves);
-    	if (sortedMoves.size() > 6) {
-    		//System.out.println("Clear list");
-    		sortedMoves.subList(6, sortedMoves.size()).clear();
+    	if (sortedMoves.size() > 7) {
+    		sortedMoves.subList(7, sortedMoves.size()).clear();
     	}
-//    	for (Node n: root.getChidren()) {
-//    		int highScore = minAB(n.getBoard(), -1000, 1000, 6);
-//    		n.setScore(highScore);
-//    		System.out.println(n.getScore());
-//    	}
     	return sortedMoves;
     }
     
@@ -149,9 +131,7 @@ public class StudentPlayer extends HusPlayer {
     	for(int i = 0; i < moves.size(); i++) {
     		HusBoardState tempBoard = (HusBoardState) board_state.clone();
     		tempBoard.move(moves.get(i).getMove());
-//    		Node child = new Node(tempBoard);
     		int highScore = minAB(tempBoard, alpha, beta, depth-1);
-    		//System.out.println("HighScore: "+ highScore);
     		moves.get(i).setScore(highScore);
     		
     	}
