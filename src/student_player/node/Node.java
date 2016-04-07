@@ -5,7 +5,7 @@ import java.util.List;
 import hus.HusBoardState;
 import hus.HusMove;
 
-public class Node {
+public class Node implements Comparable<Node> {
 	private HusBoardState board = null;
 	private ArrayList<Node> children = new ArrayList<Node>();
 	private int score = 0;
@@ -23,7 +23,11 @@ public class Node {
 	}
 	
 	public Node getChildAt(int i) {
-		return children.get(i);
+		return this.children.get(i);
+	}
+	
+	public ArrayList<Node> getChidren() {
+		return this.children;
 	}
 	
 	public void addChild(Node child) {
@@ -83,6 +87,12 @@ public class Node {
 	
 	public int numChildren() {
 		return this.children.size();
+	}
+
+	public int compareTo(Node n) {
+		int compareScore = n.getScore();
+		
+		return compareScore - this.score;
 	}
 }
 	

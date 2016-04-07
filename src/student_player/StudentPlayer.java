@@ -5,6 +5,8 @@ import hus.HusPlayer;
 import hus.HusMove;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 import java.lang.System;
 
@@ -30,86 +32,50 @@ public class StudentPlayer extends HusPlayer {
     	System.out.println("Turn Number: "+board_state.getTurnNumber());
     	if (board_state.getTurnNumber() == 0) {
     		Node startNode = new Node(board_state);
-    		startNode = callMiniMaxAB(board_state, -10000, 10000, 7, startNode);
-    		int tempMove = 0;
-	    	int tempHighScore = -10;
-	    	for (int i=0; i<startNode.numChildren(); i++) {
-	    		if (tempHighScore < startNode.getChildAt(i).getScore()) {
-	    			tempHighScore = startNode.getChildAt(i).getScore();
-	    			tempMove = i;
-	    		}
-	    	}
-	    	HusMove move = board_state.getLegalMoves().get(tempMove);
-    		//HusMove move = board_state.getLegalMoves().get(6);
-	    	//System.out.println("Time left over: "+(double)(System.nanoTime() - startTime)/1000000000);
-	    	return move;
+    		ArrayList<Node> nodes = new ArrayList<Node>();
+    		nodes = quiescence(board_state, 4, startNode);
+    		nodes = callMiniMaxAB(board_state, -10000, 10000, 7, nodes);
+	    	Collections.sort(nodes);
+	    	System.out.println("Time left over: "+(double)(System.nanoTime() - startTime)/1000000000);
+	    	return nodes.get(0).getMove();
     	}
     	else {
     	int seed = eval(board_state);
     	System.out.println("Seed count: "+seed);
-	    	if (44 < seed && seed <= 51) {
-		    	Node root = new Node(board_state);
-		    	System.out.println("MyLegalMoves: "+board_state.getLegalMoves().size());
-		    	root = callMiniMaxAB(board_state, -10000, 10000, 6, root);
-		    	int tempMove = 0;
-		    	int tempHighScore = -10;
-		    	for (int i=0; i<root.numChildren(); i++) {
-		    		if (tempHighScore < root.getChildAt(i).getScore()) {
-		    			tempHighScore = root.getChildAt(i).getScore();
-		    			tempMove = i;
-		    		}
-		    	}
-		    	HusMove move = board_state.getLegalMoves().get(tempMove);
-		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);		    	return move;
-	    	} else if ((51 < seed && seed <= 70) || (35 < seed && seed <= 44)) {
+    	System.out.println("Move count: "+board_state.getLegalMoves().size());
+	    	if (45 <= seed && seed <= 50) {
 	    		Node startNode = new Node(board_state);
-	    		System.out.println("MyLegalMoves: "+board_state.getLegalMoves().size());
-	    		startNode = callMiniMaxAB(board_state, -10000, 10000, 7, startNode);
-	    		int tempMove = 0;
-		    	int tempHighScore = -10;
-		    	for (int i=0; i<startNode.numChildren(); i++) {
-		    		if (tempHighScore < startNode.getChildAt(i).getScore()) {
-		    			tempHighScore = startNode.getChildAt(i).getScore();
-		    			tempMove = i;
-		    			
-		    		}
-		    	}
-		    	HusMove move = board_state.getLegalMoves().get(tempMove);
-		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);
-		    	return move;
-	    	} else if ((70 < seed && seed <= 80) || (15 <= seed && seed <= 35)) {
+	    		ArrayList<Node> nodes = new ArrayList<Node>();
+	    		nodes = quiescence(board_state, 4, startNode);
+	    		nodes = callMiniMaxAB(board_state, -10000, 10000, 6, nodes);
+		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);		    	
+		    	Collections.sort(nodes);
+		    	return nodes.get(0).getMove();
+	    	} else if ((50 < seed && seed <= 60) || (28 < seed && seed < 45)) {
 	    		Node startNode = new Node(board_state);
-	    		System.out.println("MyLegalMoves: "+board_state.getLegalMoves().size());
-	    		startNode = callMiniMaxAB(board_state, -10000, 10000, 8, startNode);
-	    		int tempMove = 0;
-		    	int tempHighScore = -10;
-		    	for (int i=0; i<startNode.numChildren(); i++) {
-		    		if (tempHighScore < startNode.getChildAt(i).getScore()) {
-		    			tempHighScore = startNode.getChildAt(i).getScore();
-		    			tempMove = i;
-		    		}
-		    	}
-		    	HusMove move = board_state.getLegalMoves().get(tempMove);
-		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);		    	return move;
-	    	} 
-	    	/*
-	    	else if ((80 < seed && seed <= 96) || (0 <= seed && seed < 15)) {
+	    		ArrayList<Node> nodes = new ArrayList<Node>();
+	    		nodes = quiescence(board_state, 4, startNode);
+	    		nodes = callMiniMaxAB(board_state, -10000, 10000, 7, nodes);
+		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);		    	
+		    	Collections.sort(nodes);
+		    	return nodes.get(0).getMove();
+	    	} else if ((60 < seed && seed <= 83) || (15 <= seed && seed <= 28)) {
 	    		Node startNode = new Node(board_state);
-	    		System.out.println("MyLegalMoves: "+board_state.getLegalMoves().size());
-	    		startNode = callMiniMaxAB(board_state, -10000, 10000, 9, startNode, startTime);
-	    		int tempMove = 0;
-		    	int tempHighScore = -10;
-		    	for (int i=0; i<startNode.numChildren(); i++) {
-		    		if (tempHighScore < startNode.getChildAt(i).getScore()) {
-		    			tempHighScore = startNode.getChildAt(i).getScore();
-		    			tempMove = i;
-		    		}
-		    	}
-		    	HusMove move = board_state.getLegalMoves().get(tempMove);
-		    	//System.out.println("Time left over: "+(double)(System.nanoTime() - startTime)/1000000000);
-		    	return move;
+	    		ArrayList<Node> nodes = new ArrayList<Node>();
+	    		nodes = quiescence(board_state, 4, startNode);
+	    		nodes = callMiniMaxAB(board_state, -10000, 10000, 8, nodes);
+		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);		    	
+		    	Collections.sort(nodes);
+		    	return nodes.get(0).getMove();
+	    	} else if ((83 < seed && seed <= 90) || (0 <= seed && seed <= 15)) {
+	    		Node startNode = new Node(board_state);
+	    		ArrayList<Node> nodes = new ArrayList<Node>();
+	    		nodes = quiescence(board_state, 4, startNode);
+	    		nodes = callMiniMaxAB(board_state, -10000, 10000, 9, nodes);
+		    	System.out.println("Time left over: "+(double)(2000000000 - (System.nanoTime() - startTime))/1000000000);		    	
+		    	Collections.sort(nodes);
+		    	return nodes.get(0).getMove();
 	    	}
-	    	*/
 	    	else {
 	    		Node root = new Node(board_state);
 	    		HusMove move = null;
@@ -131,12 +97,34 @@ public class StudentPlayer extends HusPlayer {
 		    			//System.out.println("Keep old move");
 		    		}
 		    	}
-		    	//System.out.println("Time left over: "+(double)(System.nanoTime() - startTime)/1000000000);
 		    	return move;
 	    	}
     	}
     }
     
+    public ArrayList<Node>  quiescence(HusBoardState board_state, int depth, Node root) {
+    	ArrayList<Node> sortedMoves = new ArrayList<Node>();
+    	for(int i = 0; i < board_state.getLegalMoves().size(); i++) {
+    		HusBoardState tempBoard = (HusBoardState) board_state.clone();
+    		tempBoard.move(board_state.getLegalMoves().get(i));
+    		Node child = new Node(tempBoard);
+    		int highScore = minAB(tempBoard, -10000, 10000, depth-1);
+    		child.setScore(highScore);
+    		child.setMove(board_state.getLegalMoves().get(i));
+    		sortedMoves.add(child);
+    	}
+    	Collections.sort(sortedMoves);
+    	if (sortedMoves.size() > 6) {
+    		//System.out.println("Clear list");
+    		sortedMoves.subList(6, sortedMoves.size()).clear();
+    	}
+//    	for (Node n: root.getChidren()) {
+//    		int highScore = minAB(n.getBoard(), -1000, 1000, 6);
+//    		n.setScore(highScore);
+//    		System.out.println(n.getScore());
+//    	}
+    	return sortedMoves;
+    }
     
     //Null Move
     public int nullMove(HusBoardState board_state, int alpha, int beta, int depth) {
@@ -157,19 +145,17 @@ public class StudentPlayer extends HusPlayer {
     	}
     }
     
-    public Node callMiniMaxAB(HusBoardState board_state, int alpha, int beta, int depth, Node root) {
-    	for(int i = 0; i < board_state.getLegalMoves().size(); i++) {
-    		//System.out.println("Time left over: "+(double)(System.nanoTime() - startTime)/1000000000);
+    public ArrayList<Node> callMiniMaxAB(HusBoardState board_state, int alpha, int beta, int depth, ArrayList<Node> moves) {
+    	for(int i = 0; i < moves.size(); i++) {
     		HusBoardState tempBoard = (HusBoardState) board_state.clone();
-    		tempBoard.move(board_state.getLegalMoves().get(i));
-    		//System.out.println("OppLegalMoves: "+tempBoard.getLegalMoves().size());
-    		Node child = new Node(tempBoard);
+    		tempBoard.move(moves.get(i).getMove());
+//    		Node child = new Node(tempBoard);
     		int highScore = minAB(tempBoard, alpha, beta, depth-1);
-    		child.setScore(highScore);
-    		root.addChild(child);
+    		//System.out.println("HighScore: "+ highScore);
+    		moves.get(i).setScore(highScore);
     		
     	}
-    	return root;
+    	return moves;
     }
     
     public int maxAB(HusBoardState board_state, int alpha, int beta, int depth) {
@@ -228,7 +214,6 @@ public class StudentPlayer extends HusPlayer {
     public double monteCarlo(Node n) {
     	
     	HusBoardState original = (HusBoardState) n.getBoard().clone();
-    	int tempHighWinLoss = 0;
     	for (int i = 0; i<original.getLegalMoves().size(); i++) {
     		HusBoardState cloned_board = (HusBoardState) original.clone();
     		cloned_board.move(cloned_board.getLegalMoves().get(i));
@@ -250,24 +235,6 @@ public class StudentPlayer extends HusPlayer {
     		}
     	}
     	return n.getWinLoss();
-    	
-    	/*
-    	HusBoardState original = (HusBoardState) n.getBoard().clone();
-    	tempPlay:
-    	for(int k = 0; k < 1000; k++){
-    		HusBoardState cloned_board = (HusBoardState) original.clone();
-    		
-		   	while (!cloned_board.gameOver()) {
-		   		cloned_board.move(cloned_board.getRandomMove());
-		   	}
-		   	if(player_id == cloned_board.getWinner()) {
-		   		n.setWin();
-		   	} else {
-		   			n.setLoss();
-		  	}
-    	}
-    	return n.getWinLoss();
-    	*/
     }
     
 }
