@@ -388,3 +388,20 @@
 455,RandomHusPlayer,260513906,1,260513906,67,game00455.log,
 456,260513906,RandomHusPlayer,0,260513906,68,game00456.log,
 457,RandomHusPlayer,260513906,0,RandomHusPlayer,82,game00457.log,
+459,260513906,RandomHusPlayer,1,RandomHusPlayer,181,game00459.log,
+461,260513906,RandomHusPlayer,1,RandomHusPlayer,5,game00461.log,TIMEOUT
+464,260513906,RandomHusPlayer,1,RandomHusPlayer,34,game00464.log,
+465,260513906,RandomHusPlayer,0,260513906,2,game00465.log,TIMEOUT
+468,260513906,RandomHusPlayer,0,260513906,52,game00468.log,
+474,260513906,RandomHusPlayer,0,260513906,34,game00474.log,
+475,260513906,RandomHusPlayer,1,RandomHusPlayer,38,game00475.log,
+480,260513906,RandomHusPlayer,GAMEOVER USER CANCEL UNDECIDED,NOBODY,14,game00480.log,USER CANCEL
+481,260513906,RandomHusPlayer,1,RandomHusPlayer,5,game00481.log,TIMEOUT
+482,260513906,RandomHusPlayer,1,RandomHusPlayer,5,game00482.log,TIMEOUT
+483,260513906,RandomHusPlayer,1,RandomHusPlayer,5,game00483.log,TIMEOUT
+484,260513906,RandomHusPlayer,1,RandomHusPlayer,5,game00484.log,TIMEOUT
+486,260513906,RandomHusPlayer,1,RandomHusPlayer,12,game00486.log,
+487,260513906,RandomHusPlayer,1,RandomHusPlayer,1,game00487.log,TIMEOUT
+488,260513906,RandomHusPlayer,1,RandomHusPlayer,3,game00488.log,TIMEOUT
+490,260513906,RandomHusPlayer,0,260513906,41,game00490.log,
+491,260513906,RandomHusPlayer,1,RandomHusPlayer,0,game00491.log,TIMEOUT

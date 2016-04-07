@@ -9,7 +9,7 @@ public class Node {
 	private HusBoardState board = null;
 	private ArrayList<Node> children = new ArrayList<Node>();
 	private int score = 0;
-	private int move = 0;
+	private HusMove move = null;
 	private int num = 0;
 	private int den = 0;
 	
@@ -73,11 +73,11 @@ public class Node {
 		this.score = score;
 	}
 	
-	public void setMove(int i) {
-		this.move = i;
+	public void setMove(HusMove move) {
+		this.move = move;
 	}
 	
-	public int getMove() {
+	public HusMove getMove() {
 		return this.move;
 	}
 	
